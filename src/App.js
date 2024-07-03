@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-
 import "./App.css";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";

@@ -6,7 +6,7 @@ import AddProduct from "../../components/AddProduct";
 import { fetchProducts } from "../../redux/actions";
 function Products() {
   const dispatch = useDispatch();
-  const { customers, products, orders } = useSelector((store) => store);
+  const { products, customers, orders } = useSelector((store) => store);
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch, customers, products, orders]);

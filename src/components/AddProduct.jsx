@@ -11,11 +11,10 @@ import axios from "axios";
 import { toast, ToastContainer, Bounce } from "react-toastify";
 import "./style.css";
 function AddProduct() {
-  let { token } = JSON.parse(sessionStorage.getItem("session-data"));
+  let session = JSON.parse(sessionStorage.getItem("session-data"));
   const [file, setFile] = useState(null);
   const [productData, setProductData] = useState({});
   const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState("");
 
   function handleAddProduct() {
     setLoading(true);
@@ -30,7 +29,7 @@ function AddProduct() {
         productForm,
         {
           headers: {
-            token,
+            token: session.token,
             "access-control-allow-origin": "http://localhost:3000/",
           },
         }

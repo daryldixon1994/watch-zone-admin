@@ -9,7 +9,7 @@ function Users() {
   useEffect(() => {
     dispatch(fetchCustomers());
   }, [dispatch, customers, products, orders]);
-  // console.log(customers);
+
   return (
     <div class="page-container">
       <div id="customers-list">

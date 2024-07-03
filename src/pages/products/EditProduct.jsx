@@ -8,27 +8,33 @@ import {
   FormGroup,
 } from "semantic-ui-react";
 import axios from "axios";
-import { toast, ToastContainer, Bounce } from "react-toastify";
+import { ToastContainer, Bounce } from "react-toastify";
 import "./style.css";
-function EditProduct({ setShow }) {
-  let { token } = JSON.parse(sessionStorage.getItem("session-data"));
-  const [file, setFile] = useState(null);
+import { accessUrl, baseUrl } from "../../utils";
+function EditProduct({ setShow, id, token }) {
   const [productData, setProductData] = useState({});
   const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState("");
-
+  function handleSave() {
+    setLoading(true);
+    axios
+      .put(`${baseUrl}/updateProduct/${id}`, productData, {
+        headers: {
+          token,
+          "access-control-allow-origin": accessUrl,
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+        setShow(false);
+      })
+      .catch((err) => {
+        console.dir(err);
+        setLoading(false);
+      });
+  }
   return (
     <>
       <Form loading={loading}>
-        <FormField
-          id="form-input-control"
-          control={Input}
-          type="file"
-          onChange={(e) => {
-            setFile(e.target.files[0]);
-          }}
-          widths={1}
-        />
         <FormField
           id="form-input-control-first-name"
           control={Input}
@@ -64,7 +70,7 @@ function EditProduct({ setShow }) {
             }}
           />
         </FormGroup>
-        <Button>Save</Button>
+        <Button onClick={() => handleSave()}>Save</Button>
         <Button onClick={() => setShow(false)}>Cancel</Button>
       </Form>
       <ToastContainer

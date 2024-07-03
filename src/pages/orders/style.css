@@ -1,0 +1,13 @@
+.page-container {
+  /* border: 1px black solid; */
+  margin: 20px 35px !important;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+#show-more {
+  color: blueviolet;
+}
+#show-more:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

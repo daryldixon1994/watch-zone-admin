@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+
 function DashboardNav() {
-  const { customers, products, orders } = useSelector((store) => store);
+  const navigate = useNavigate();
   const activeStyle = {
     color: "#e5e5e5",
     textDecoration: "underline",
@@ -13,6 +13,10 @@ function DashboardNav() {
   const notActiveStyle = {
     color: "#b38d3a",
   };
+  function handleLogout() {
+    sessionStorage.clear();
+    navigate("/");
+  }
   return (
     <div id="dash-nav">
       <h3>WatchZone</h3>
@@ -31,7 +35,7 @@ function DashboardNav() {
           }}
           to="/admin/users"
         >
-          Customers ({customers.length})
+          Customers
         </NavLink>
         <NavLink
           style={({ isActive }) => {
@@ -39,7 +43,7 @@ function DashboardNav() {
           }}
           to="/admin/products"
         >
-          Products ({products.length})
+          Products
         </NavLink>
         <NavLink
           style={({ isActive }) => {
@@ -47,9 +51,11 @@ function DashboardNav() {
           }}
           to="/admin/orders"
         >
-          Orders ({orders.length})
+          Orders
         </NavLink>
-        <NavLink style={notActiveStyle}>Logout</NavLink>
+        <NavLink style={notActiveStyle} onClick={() => handleLogout()}>
+          Logout
+        </NavLink>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CardMeta,
   CardHeader,
@@ -8,7 +8,51 @@ import {
   Image,
 } from "semantic-ui-react";
 import "./style.css";
+import axios from "axios";
+import { baseUrl, accessUrl, getToken } from "../../utils";
 function UserItem({ fullName, email, phone, address, isBanned, _id }) {
+  let token = getToken()
+  const [laoding, setLoading] = useState(false);
+  function handleBanUser() {
+    setLoading(true);
+    axios
+      .put(
+        `${baseUrl}/banCustomer/${_id}`,
+        {},
+        {
+          headers: {
+            token,
+            "access-control-allow-origin": accessUrl,
+          },
+        }
+      )
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+  }
+  function handleUnbanUser() {
+    setLoading(true);
+    axios
+      .put(
+        `${baseUrl}/unbanCustomer/${_id}`,
+        {},
+        {
+          headers: {
+            token,
+            "access-control-allow-origin": accessUrl,
+          },
+        }
+      )
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+  }
   return (
     <Card className="user-item">
       <CardContent>
@@ -24,10 +68,19 @@ function UserItem({ fullName, email, phone, address, isBanned, _id }) {
       </CardContent>
       <CardContent extra>
         <div className="ui two buttons">
-          <Button  disabled={!isBanned}  color="green">
+          <Button
+            onClick={() => handleUnbanUser()}
+            disabled={!isBanned}
+            color="green"
+          >
             Unban
           </Button>
-          <Button disabled={isBanned} color="red">
+          <Button
+            onClick={() => handleBanUser()}
+            disabled={isBanned}
+            color="red"
+            laoding={laoding}
+          >
             Ban
           </Button>
         </div>
