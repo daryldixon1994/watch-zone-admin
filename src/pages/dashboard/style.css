@@ -1,0 +1,37 @@
+#admin-dashboard {
+  /* border: 1px red solid; */
+  min-height: 86.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+}
+#admin-dashboard h1 {
+  color: #0d3721;
+}
+#links-container {
+  /* border: 1px blue solid; */
+  min-height: 50vh;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.dash-link:hover {
+  background-color: #b38d3a;
+  color: #0d3721;
+  transform: scale(1.2);
+}
+.dash-link {
+  color: #0d3721;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px #b38d3a89 solid;
+  border-radius: 22px;
+  padding: 20px 40px;
+  transition: transform ease 0.5s;
+}

@@ -1,0 +1,48 @@
+nav {
+  background-color: #0d3721;
+  color: #b38d3a;
+}
+#login-page {
+  min-height: 99.5vh;
+}
+#login-box {
+  /* border: 1px red solid; */
+  min-height: 80vh;
+}
+.email-bx,
+.pwd-bx {
+  all: unset !important;
+  font-size: 1.3rem !important;
+  border-bottom: 2px #0d3721 solid !important;
+  padding: 5px !important;
+  width: 100% !important;
+}
+.email-err,
+.pwd-err {
+  all: unset !important;
+  font-size: 1.3rem !important;
+  border-bottom: 2px red solid !important;
+  padding: 5px !important;
+  width: 100% !important;
+}
+.err-msg {
+  color: red;
+  width: 100%;
+}
+#login-box form input {
+  all: unset;
+}
+#login-box form input::placeholder {
+  font-size: 1.3rem;
+}
+#login-box form button {
+  all: unset;
+  background-color: #0d3721;
+  color: #c9c9c9;
+  width: 50%;
+  padding: 5px 13px;
+  text-align: center;
+  font-size: 1.3rem;
+  border-radius: 40px;
+  cursor: pointer;
+}

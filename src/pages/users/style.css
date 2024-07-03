@@ -1,0 +1,15 @@
+.page-container {
+  /* border: 1px black solid; */
+  margin: 50px 35px;
+  min-height: 100vh;
+  
+}
+#customers-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 35px;
+}
+.user-item {
+  margin: 0 !important;
+}

@@ -1,0 +1,25 @@
+#dash-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 35px;
+  background-color: #0d3721;
+  color: #b38d3a;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+#dash-nav h3 {
+  font-size: 2rem;
+}
+#nav-links {
+  /* border: 1px white solid; */
+  width: 40%;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.product-name-input {
+  border: 1px black solid;
+  height: 80px !important;
+}
